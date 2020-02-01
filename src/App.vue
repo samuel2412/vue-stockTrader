@@ -1,18 +1,16 @@
 <template>
   <div>
     <app-navbar />
-    <router-view class="router"/>
-
+    <router-view class="router" />
   </div>
 </template>
 
 <script>
 import Navbar from "./components/Navbar.vue";
 
-
 export default {
   components: {
-    appNavbar: Navbar,
+    appNavbar: Navbar
   }
 };
 </script>
@@ -26,7 +24,7 @@ export default {
 </style>
 
 <style scoped>
- .router{
-    margin: 20px;
- }
+.router {
+  margin: 20px;
+}
 </style>

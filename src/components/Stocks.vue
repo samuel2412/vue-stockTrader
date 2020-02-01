@@ -1,8 +1,11 @@
 <template>
-  <div class="row row-cols-1 row-cols-md-2">
-    <div class="col mb-4" v-for="(company,index) in companies" :key="company.name">
-      <app-card :company="company" :index="index"></app-card>
+  <div>
+    <div v-if="companies.length" class="row row-cols-1 row-cols-md-2">
+      <div class="col mb-4" v-for="(company,index) in companies" :key="company.name">
+        <app-card :company="company" :index="index"></app-card>
+      </div>
     </div>
+    <div v-else class="alert alert-warning" role="alert">You don't have stocks</div>
   </div>
 </template>
 
@@ -12,13 +15,13 @@ import StockCard from "./StockCard.vue";
 export default {
   data() {
     return {
-      path: this.$router.currentRoute.path,
+      path: this.$router.currentRoute.path
     };
   },
   watch: {
     $route(to, from) {
-      if(to.path != this.path){
-          this.path = to.path;
+      if (to.path != this.path) {
+        this.path = to.path;
       }
     }
   },
@@ -33,6 +36,6 @@ export default {
   },
   components: {
     appCard: StockCard
-  }
+  },
 };
 </script>

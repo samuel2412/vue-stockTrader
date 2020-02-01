@@ -1,10 +1,5 @@
 const state = {
-    userStocks: [
-        { name: 'Google', quantity: 0 },
-        { name: 'Apple', quantity: 0 },
-        { name: 'Facebook', quantity: 0 },
-        { name: 'Tesla', quantity: 0 },
-    ],
+    userStocks: [],
     funds: 10000,
 }
 

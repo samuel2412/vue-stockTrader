@@ -1,20 +1,24 @@
 <template>
-  <div class="card">
-    <div class="card-header">
-      <span class="company-name">{{company.name}}</span>
-      <span
-        v-if="company.quantity"
-        class="company-info"
-      >(Price: {{company.price | priceFormat}} | Quantity: {{company.quantity}} )</span>
-      <span v-else class="company-info">(Price: {{company.price | priceFormat}})</span>
-    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="company-name">{{company.name}}</span>
+        <span
+          v-if="company.quantity"
+          class="company-info"
+        >(Price: {{company.price | priceFormat}} | Quantity: {{company.quantity}} )</span>
+        <span v-else class="company-info">(Price: {{company.price | priceFormat}})</span>
+      </div>
 
-    <div class="card-body">
-      <input v-model="quantity" class="form-control" type="number" placeholder="Quantity" min="1" />
-      <button v-if="company.quantity" @click="sell({company,quantity})" class="btn btn-danger">Sell</button>
-      <button v-else @click="buy({company,quantity})" class="btn btn-primary">Buy</button>
+      <div class="card-body">
+        <input v-model="quantity" class="form-control" type="number" placeholder="Quantity" min="1" />
+        <button
+          v-if="company.quantity"
+          @click="sell({company,quantity})"
+          class="btn btn-danger"
+        >Sell</button>
+        <button v-else @click="buy({company,quantity})" class="btn btn-primary">Buy</button>
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -39,7 +43,7 @@ export default {
   },
   filters: {
     priceFormat(value) {
-      return (value).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+      return value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
     }
   }
 };
