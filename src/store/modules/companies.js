@@ -1,6 +1,6 @@
 const state = {
     companies:[
-        {name: 'Google',price: 100},
+        {name: 'Google',price: 10000},
         {name: 'BMW',price: 100},
         {name: 'Apple',price: 100},
         {name: 'Facebook',price: 100},

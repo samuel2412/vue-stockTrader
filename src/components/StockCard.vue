@@ -2,20 +2,32 @@
   <div class="card">
     <div class="card-header">
       <span class="company-name">{{company.name}}</span>
-      <span v-if="company.quantity" class="company-info">(Price: {{company.price}} | Quantity: {{company.quantity}} )</span>
+      <span
+        v-if="company.quantity"
+        class="company-info">(Price: {{company.price}} | Quantity: {{company.quantity}} )</span>
       <span v-else class="company-info">(Price: {{company.price}})</span>
     </div>
 
     <div class="card-body">
-      <input class="form-control" type="number" placeholder="Quantity" />
-      <button class="btn btn-primary">Buy</button>
+      <input v-model="quantity" class="form-control" type="number" placeholder="Quantity" min='1'/>
+      <button v-if="company.quantity" @click="sellStocks({company,quantity})" class="btn btn-danger">Sell</button>
+      <button v-else @click="buyStocks({company,quantity})" class="btn btn-primary">Buy</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
-  props: ["company"]
+  props: ["company"],
+  data() {
+    return {
+      quantity: ""
+    };
+  },
+  methods: {
+    ...mapActions(["buyStocks", "sellStocks"])
+  }
 };
 </script>
 
@@ -37,11 +49,11 @@ input {
   width: 40%;
   min-width: 100px;
 }
-.company-name{
- text-transform: capitalize;
- font-weight: bold;
+.company-name {
+  text-transform: capitalize;
+  font-weight: bold;
 }
-.company-info{
+.company-info {
   font-size: 12px;
 }
 </style>

@@ -1,16 +1,20 @@
 const state = {
-    userStocks:[
-        {name: 'Google',price: 100, quantity: (Math.random*100)+1},
-        {name: 'Apple',price: 100, quantity: (Math.random*100)+1},
-        {name: 'Facebook',price: 100, quantity: (Math.random*100)+1},
-        {name: 'Tesla',price: 100, quantity: (Math.random*100)+1},
+    userStocks: [
+        { name: 'Google', quantity: Math.max(Math.floor(Math.random() * 50) + 1, 10) },
+        { name: 'Apple', quantity: Math.max(Math.floor(Math.random() * 50) + 1, 10) },
+        { name: 'Facebook', quantity: Math.max(Math.floor(Math.random() * 50) + 1, 10) },
+        { name: 'Tesla', quantity: Math.max(Math.floor(Math.random() * 50) + 1, 10) },
     ],
     funds: 10000,
 }
 
 const getters = {
-    userStocks: state => {
-        return state.userStocks;
+    userStocks: (state, rootState) => {
+        const aux = rootState.companies.map(company => ({
+            ...state.userStocks.find((stock) => (stock.name === company.name) && stock),
+            ...company
+        }));
+        return aux.filter(item => item.quantity);
     },
     userFunds: state => {
         return (state.funds).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');;
@@ -18,11 +22,58 @@ const getters = {
 }
 
 const mutations = {
-    buyStocks: state => {},
-    sellStocks: state =>{},
+    buyStocks: (state, payload) => {
+        const { company, quantity } = payload;
+        if (quantity > 0) {
+            const index = state.userStocks.findIndex(stock => stock.name === company.name);
+            if (state.funds <= quantity * company.price) {
+                if (index) {
+                    state.userStocks[index].quantity += (state.funds / company.price);
+                } else {
+                    state.userStocks.push(
+                        { name: company.name, quantity: (state.funds / company.price) }
+                    );
+                }
+                state.funds = 0;
+            } else {
+                if (index) {
+                    state.userStocks[index].quantity += quantity;
+                } else {
+                    state.userStocks.push(
+                        { name: company.name, quantity: quantity }
+                    );
+                }
+                state.funds-= quantity*company.price;
+            }
+        }
+    },
+    sellStocks: (state, payload) => {
+        const { company, quantity } = payload;
+        const index = state.userStocks.findIndex(stock => stock.name === company.name);
+        if (quantity > 0) {
+            if (state.userStocks[index].quantity <= quantity) {
+                state.funds += state.userStocks[index].quantity * company.price;
+                state.userStocks.splice(index, 1);
+
+            } else {
+                state.funds += quantity * company.price;
+                state.userStocks[index].quantity -= quantity;
+            }
+
+        }
+    },
 }
 
-const actions = {}
+const actions = {
+    buyStocks: ({ commit }, payload) => {
+        commit('buyStocks', payload);
+    },
+    sellStocks: ({ commit }, payload) => {
+       // if (confirm('You sure?')) {
+            commit('sellStocks', payload);
+       // }
+    }
+}
 
 export default {
     state, getters, mutations, actions
