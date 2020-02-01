@@ -1,7 +1,7 @@
 <template>
 <div>
   <nav class="navbar navbar-expand-sm navbar-light">
-    <a class="navbar-brand" href="#">Stock Trader</a>
+     <router-link to='/' tag='a' class="navbar-brand">Stock Trader</router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -15,19 +15,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">
-            Portfolio
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Stocks</a>
-        </li>
+        <router-link to='/portfolio' tag='li' active-class="active"><a class="nav-link">Portfolio</a></router-link>
+         <router-link to='/stocks' tag='li' active-class="active"><a class="nav-link">Stocks</a></router-link>
       </ul>
       <ul class="navbar-nav my-2 my-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">End Day</a>
+          <span class="nav-link pointer" @click="endDay">End Day</span>
         </li>
         <li class="nav-item dropdown">
           <a
@@ -40,8 +33,8 @@
             aria-expanded="false"
           >Save & Load</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Save</a>
-            <a class="dropdown-item" href="#">Load</a>
+            <span class="dropdown-item pointer"  @click="save">Save</span>
+            <span class="dropdown-item pointer"  @click="load">Load</span>
           </div>
         </li>
       </ul>
@@ -52,12 +45,27 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods:{
+    endDay(){
+      console.log('end day')
+    },
+    save(){
+      console.log('save')
+    },
+    load(){
+      console.log('load')
+    },
+  }
+};
 </script>
 
 <style scoped>
 nav {
 background-color: #e3f2fd;
 padding: 5px 20px;
+}
+.pointer {
+  cursor: pointer;
 }
 </style>
