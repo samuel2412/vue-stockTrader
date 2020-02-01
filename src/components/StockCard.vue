@@ -4,12 +4,13 @@
       <span class="company-name">{{company.name}}</span>
       <span
         v-if="company.quantity"
-        class="company-info">(Price: {{company.price}} | Quantity: {{company.quantity}} )</span>
-      <span v-else class="company-info">(Price: {{company.price}})</span>
+        class="company-info"
+      >(Price: {{company.price | priceFormat}} | Quantity: {{company.quantity}} )</span>
+      <span v-else class="company-info">(Price: {{company.price | priceFormat}})</span>
     </div>
 
     <div class="card-body">
-      <input v-model="quantity" class="form-control" type="number" placeholder="Quantity" min='1'/>
+      <input v-model="quantity" class="form-control" type="number" placeholder="Quantity" min="1" />
       <button v-if="company.quantity" @click="sell({company,quantity})" class="btn btn-danger">Sell</button>
       <button v-else @click="buy({company,quantity})" class="btn btn-primary">Buy</button>
     </div>
@@ -27,14 +28,19 @@ export default {
   },
   methods: {
     ...mapActions(["buyStocks", "sellStocks"]),
-    buy(payload){
+    buy(payload) {
       this.buyStocks(payload);
-      this.quantity='';
+      this.quantity = "";
     },
-    sell(payload){
+    sell(payload) {
       this.sellStocks(payload);
-      this.quantity='';
-    },
+      this.quantity = "";
+    }
+  },
+  filters: {
+    priceFormat(value) {
+      return (value).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+    }
   }
 };
 </script>

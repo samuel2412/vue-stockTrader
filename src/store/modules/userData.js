@@ -17,7 +17,7 @@ const getters = {
         return aux.filter(item => item.quantity);
     },
     userFunds: state => {
-        return (state.funds).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');;
+        return (state.funds).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     },
 }
 
