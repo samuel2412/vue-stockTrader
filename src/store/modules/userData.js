@@ -13,7 +13,7 @@ const getters = {
         return state.userStocks;
     },
     userFunds: state => {
-        return state.funds;
+        return (state.funds).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');;
     },
 }
 
