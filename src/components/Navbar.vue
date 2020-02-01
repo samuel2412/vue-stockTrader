@@ -57,9 +57,9 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["fetchData"]),
+    ...mapActions(["fetchData","randomize"]),
     endDay() {
-      console.log("end day");
+      this.randomize();
     },
     save() {
       const data = {

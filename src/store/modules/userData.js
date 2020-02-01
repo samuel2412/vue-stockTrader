@@ -1,9 +1,9 @@
 const state = {
     userStocks: [
-        { name: 'Google', quantity: Math.max(Math.floor(Math.random() * 50) + 1, 10) },
-        { name: 'Apple', quantity: Math.max(Math.floor(Math.random() * 50) + 1, 10) },
-        { name: 'Facebook', quantity: Math.max(Math.floor(Math.random() * 50) + 1, 10) },
-        { name: 'Tesla', quantity: Math.max(Math.floor(Math.random() * 50) + 1, 10) },
+        { name: 'Google', quantity: 0 },
+        { name: 'Apple', quantity: 0 },
+        { name: 'Facebook', quantity: 0 },
+        { name: 'Tesla', quantity: 0 },
     ],
     funds: 10000,
 }

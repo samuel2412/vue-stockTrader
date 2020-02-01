@@ -1,6 +1,6 @@
 const state = {
     companies:[
-        {name: 'Google',price: 10000},
+        {name: 'Google',price: 100},
         {name: 'BMW',price: 100},
         {name: 'Apple',price: 100},
         {name: 'Facebook',price: 100},
@@ -19,9 +19,19 @@ const getters = {
     },
 }
 
-const mutations = {}
+const mutations = {
+    randomize(){
+        state.companies.map(company=>{
+            company.price = Math.max(Math.floor(Math.random() * company.price*1.5) +1, company.price*0.75 )
+        })
+    }
+}
 
-const actions = {}
+const actions = {
+    randomize: ({ commit }) => {
+        commit('randomize');
+    },
+}
 
 export default {
     state, getters, mutations, actions
