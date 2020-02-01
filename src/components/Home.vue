@@ -5,13 +5,19 @@
     <p>Click on 'End Day' to begin a new Day!</p>
     <hr class="my-4" />
     <h5>
-      <strong>Your Funds: $10</strong>
+      <strong>Your Funds: $ {{funds}}</strong>
     </h5>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  computed:{
+    funds(){
+       return this.$store.getters.userFunds;
+    }
+  }
+};
 </script>
 
 <style scoped>

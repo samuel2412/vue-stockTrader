@@ -60,6 +60,11 @@ const mutations = {
             }
         }
     },
+    fetch: (state, payload) => {
+        const { funds, userStocks } = payload;
+        state.funds = funds;
+        state.userStocks = userStocks;
+    }
 }
 
 const actions = {
@@ -70,6 +75,9 @@ const actions = {
         // if (confirm('You sure?')) {
         commit('sellStocks', payload);
         // }
+    },
+    fetchData: ({ commit }, payload) => {
+        commit('fetch', payload);
     }
 }
 

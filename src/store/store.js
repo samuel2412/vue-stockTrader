@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import companies from './modules/companies';
-import userData  from './modules/userData';
+import userData from './modules/userData';
 
 Vue.use(Vuex);
 
