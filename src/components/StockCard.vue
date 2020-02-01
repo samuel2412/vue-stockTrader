@@ -1,8 +1,9 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <span class="companie-name">{{company.name}}</span>
-      <span class="companie-price">(Price: {{company.price}})</span>
+      <span class="company-name">{{company.name}}</span>
+      <span v-if="company.quantity" class="company-info">(Price: {{company.price}} | Quantity: {{company.quantity}} )</span>
+      <span v-else class="company-info">(Price: {{company.price}})</span>
     </div>
 
     <div class="card-body">
@@ -36,11 +37,11 @@ input {
   width: 40%;
   min-width: 100px;
 }
-.companie-name{
+.company-name{
  text-transform: capitalize;
  font-weight: bold;
 }
-.companie-price{
+.company-info{
   font-size: 12px;
 }
 </style>

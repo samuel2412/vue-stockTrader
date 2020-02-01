@@ -16,6 +16,12 @@ export const store = new Vuex.Store({
             {name: 'Samsung',price: 100},
             {name: 'Netflix',price: 100},
             {name: 'Tesla',price: 100},
+        ],
+        userStocks:[
+            {name: 'Google',price: 100, quantity: (Math.random*100)+1},
+            {name: 'Apple',price: 100, quantity: (Math.random*100)+1},
+            {name: 'Facebook',price: 100, quantity: (Math.random*100)+1},
+            {name: 'Tesla',price: 100, quantity: (Math.random*100)+1},
         ]
     },
     getters: {},

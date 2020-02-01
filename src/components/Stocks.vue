@@ -1,22 +1,38 @@
 <template>
-    <div class="row row-cols-1 row-cols-md-2">
-      <div class="col mb-4" v-for="company in companies" :key="company.name">
-          <app-card :company="company"> </app-card>
-      </div>
+  <div class="row row-cols-1 row-cols-md-2">
+    <div class="col mb-4" v-for="company in companies" :key="company.name">
+      <app-card :company="company"></app-card>
     </div>
+  </div>
 </template>
 
 <script>
-import StockCard from './StockCard.vue';
+import StockCard from "./StockCard.vue";
 
 export default {
-   computed:{
-       companies(){
-           return this.$store.state.companies;
-       }
-   },
-    components:{
-        appCard: StockCard,
+  data() {
+    return {
+      path: this.$router.currentRoute.path
+    };
+  },
+  watch: {
+    $route(to, from) {
+      if(to.path != this.path){
+          this.path = to.path;
+      }
     }
+  },
+  computed: {
+    companies() {
+      if (this.path === "/stocks") {
+        return this.$store.state.companies;
+      } else if (this.path === "/portfolio") {
+        return this.$store.state.userStocks;
+      }
+    }
+  },
+  components: {
+    appCard: StockCard
+  }
 };
 </script>
