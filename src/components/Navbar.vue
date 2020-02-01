@@ -1,4 +1,5 @@
 <template>
+<div>
   <nav class="navbar navbar-expand-sm navbar-light">
     <a class="navbar-brand" href="#">Stock Trader</a>
     <button
@@ -47,6 +48,8 @@
       <span class="navbar-text">Funds: $10</span>
     </div>
   </nav>
+  <slot></slot>
+</div>
 </template>
 
 <script>

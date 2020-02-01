@@ -4,7 +4,9 @@
     <p>You may Save & Load your Data</p>
     <p>Click on 'End Day' to begin a new Day!</p>
     <hr class="my-4" />
-    <h5><strong>Your Funds: $10</strong></h5>
+    <h5>
+      <strong>Your Funds: $10</strong>
+    </h5>
   </div>
 </template>
 
@@ -13,9 +15,9 @@ export default {};
 </script>
 
 <style scoped>
-div{
-    margin: 20px;
-    background-color: #fcfcfc;
-    box-shadow: 2px 2px 10px black;
+div {
+  margin: 20px;
+  background-color: #fcfcfc;
+  box-shadow: 2px 2px 10px gray;
 }
 </style>
