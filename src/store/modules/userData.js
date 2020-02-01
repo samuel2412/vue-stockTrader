@@ -27,23 +27,23 @@ const mutations = {
         if (quantity > 0) {
             const index = state.userStocks.findIndex(stock => stock.name === company.name);
             if (state.funds <= quantity * company.price) {
-                if (index) {
-                    state.userStocks[index].quantity += (state.funds / company.price);
+                if (index > 0) {
+                    state.userStocks[index].quantity += Number((state.funds / company.price));
                 } else {
                     state.userStocks.push(
-                        { name: company.name, quantity: (state.funds / company.price) }
+                        { name: company.name, quantity: Number((state.funds / company.price)) }
                     );
                 }
                 state.funds = 0;
             } else {
-                if (index) {
-                    state.userStocks[index].quantity += quantity;
+                if (index > 0) {
+                    state.userStocks[index].quantity += Number(quantity);
                 } else {
                     state.userStocks.push(
-                        { name: company.name, quantity: quantity }
+                        { name: company.name, quantity: Number(quantity) }
                     );
                 }
-                state.funds-= quantity*company.price;
+                state.funds -= quantity * company.price;
             }
         }
     },
@@ -54,12 +54,10 @@ const mutations = {
             if (state.userStocks[index].quantity <= quantity) {
                 state.funds += state.userStocks[index].quantity * company.price;
                 state.userStocks.splice(index, 1);
-
             } else {
                 state.funds += quantity * company.price;
-                state.userStocks[index].quantity -= quantity;
+                state.userStocks[index].quantity -= Number(quantity);
             }
-
         }
     },
 }
@@ -69,9 +67,9 @@ const actions = {
         commit('buyStocks', payload);
     },
     sellStocks: ({ commit }, payload) => {
-       // if (confirm('You sure?')) {
-            commit('sellStocks', payload);
-       // }
+        // if (confirm('You sure?')) {
+        commit('sellStocks', payload);
+        // }
     }
 }
 

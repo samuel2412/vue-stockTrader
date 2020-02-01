@@ -10,8 +10,8 @@
 
     <div class="card-body">
       <input v-model="quantity" class="form-control" type="number" placeholder="Quantity" min='1'/>
-      <button v-if="company.quantity" @click="sellStocks({company,quantity})" class="btn btn-danger">Sell</button>
-      <button v-else @click="buyStocks({company,quantity})" class="btn btn-primary">Buy</button>
+      <button v-if="company.quantity" @click="sell({company,quantity})" class="btn btn-danger">Sell</button>
+      <button v-else @click="buy({company,quantity})" class="btn btn-primary">Buy</button>
     </div>
   </div>
 </template>
@@ -26,7 +26,15 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["buyStocks", "sellStocks"])
+    ...mapActions(["buyStocks", "sellStocks"]),
+    buy(payload){
+      this.buyStocks(payload);
+      this.quantity='';
+    },
+    sell(payload){
+      this.sellStocks(payload);
+      this.quantity='';
+    },
   }
 };
 </script>
