@@ -1,6 +1,10 @@
 <template>
   <div class="card">
-    <h5 class="card-header">{{company}}</h5>
+    <div class="card-header">
+      <span class="companie-name">{{company.name}}</span>
+      <span class="companie-price">(Price: {{company.price}})</span>
+    </div>
+
     <div class="card-body">
       <input class="form-control" type="number" placeholder="Quantity" />
       <button class="btn btn-primary">Buy</button>
@@ -21,6 +25,7 @@ export default {
   box-shadow: 2px 2px 10px gray;
 }
 .card-header {
+  padding: 10px;
   background-color: #e3f2fd;
 }
 .card-body {
@@ -30,5 +35,12 @@ export default {
 input {
   width: 40%;
   min-width: 100px;
+}
+.companie-name{
+ text-transform: capitalize;
+ font-weight: bold;
+}
+.companie-price{
+  font-size: 12px;
 }
 </style>

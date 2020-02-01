@@ -1,11 +1,23 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-//import counter from './modules/counter';
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
-    state: {},
+    state: {
+        companies:[
+            {name: 'Google',price: 100},
+            {name: 'BMW',price: 100},
+            {name: 'Apple',price: 100},
+            {name: 'Facebook',price: 100},
+            {name: 'Twitter',price: 100},
+            {name: 'Dell',price: 100},
+            {name: 'TCL',price: 100},
+            {name: 'Samsung',price: 100},
+            {name: 'Netflix',price: 100},
+            {name: 'Tesla',price: 100},
+        ]
+    },
     getters: {},
     mutations: {},
     actions: {},

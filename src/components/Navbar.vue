@@ -1,6 +1,6 @@
 <template>
 <div>
-  <nav class="navbar navbar-expand-sm navbar-light">
+  <nav class="navbar navbar-expand-md navbar-light">
      <router-link to='/' tag='a' class="navbar-brand">Stock Trader</router-link>
     <button
       class="navbar-toggler"

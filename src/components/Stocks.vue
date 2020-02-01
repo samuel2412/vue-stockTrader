@@ -1,6 +1,6 @@
 <template>
     <div class="row row-cols-1 row-cols-md-2">
-      <div class="col mb-4" v-for="company in companys" :key="company">
+      <div class="col mb-4" v-for="company in companies" :key="company.name">
           <app-card :company="company"> </app-card>
       </div>
     </div>
@@ -10,11 +10,11 @@
 import StockCard from './StockCard.vue';
 
 export default {
-    data(){
-        return{
-            companys: ['BMW','Google','Apple','Twitter']
-        }
-    },
+   computed:{
+       companies(){
+           return this.$store.state.companies;
+       }
+   },
     components:{
         appCard: StockCard,
     }
