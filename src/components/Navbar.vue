@@ -38,7 +38,7 @@
           </div>
         </li>
       </ul>
-      <span class="navbar-text">Funds: $10</span>
+      <span class="navbar-text">Funds: $ {{funds}}</span>
     </div>
   </nav>
 </div>
@@ -46,6 +46,11 @@
 
 <script>
 export default {
+  computed:{
+    funds(){
+      return this.$store.getters.userFunds;
+    }
+  },
   methods:{
     endDay(){
       console.log('end day')

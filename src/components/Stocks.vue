@@ -12,7 +12,7 @@ import StockCard from "./StockCard.vue";
 export default {
   data() {
     return {
-      path: this.$router.currentRoute.path
+      path: this.$router.currentRoute.path,
     };
   },
   watch: {
@@ -25,9 +25,9 @@ export default {
   computed: {
     companies() {
       if (this.path === "/stocks") {
-        return this.$store.state.companies;
+        return this.$store.getters.companies;
       } else if (this.path === "/portfolio") {
-        return this.$store.state.userStocks;
+        return this.$store.getters.userStocks;
       }
     }
   },
