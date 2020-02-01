@@ -16,7 +16,6 @@ export default {};
 
 <style scoped>
 div {
-  margin: 20px;
   background-color: #fcfcfc;
   box-shadow: 2px 2px 10px gray;
 }

@@ -1,8 +1,8 @@
 <template>
   <div>
     <app-navbar />
-    <router-view />
-    
+    <router-view class="router"/>
+
   </div>
 </template>
 
@@ -25,3 +25,8 @@ export default {
 }
 </style>
 
+<style scoped>
+ .router{
+    margin: 20px;
+ }
+</style>
